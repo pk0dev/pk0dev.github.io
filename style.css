@@ -1,0 +1,76 @@
+*{
+    background-color: black;
+    font-family: 'JetBrains Mono', monospace;
+    color: white;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+#intro{
+    margin: 5% 5% 2% 5%;
+    padding: 0% 5%;
+    border-left: 2px solid white;
+    width: 50%;
+    height: 60vh;
+}
+
+h1{
+    font-size: 100px;
+    margin-left: 5%;
+}
+
+p{
+    text-align: right;
+    font-size: 20px;
+    margin-right: 5%;
+}
+
+img{
+    margin-left: 4.3%;
+    cursor: pointer;
+    padding-bottom: 0.4%;
+    padding-top: 0.5%;
+}
+
+#about{
+    float: right;
+    width: 50%;
+    margin: 5% 0%;
+}
+
+#about-mobile{
+    display: none;
+}
+@media only screen and (max-width: 900px) {
+    
+    #intro{
+        width: 100%;
+    }
+
+    #about{
+        width: 100%;
+        display: none;
+    }
+
+    #about-mobile{
+        display:block;        
+    }
+
+    #about-mobile p{
+        text-align: justify;
+        padding: 2% 5%;
+    }
+
+
+}
+
+#about p {
+    font-size: 14px;
+    text-align: justify;
+    padding: 0% 5%;
+}
+
+
