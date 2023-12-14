@@ -1,76 +1,143 @@
-*{
-    background-color: black;
-    font-family: 'JetBrains Mono', monospace;
-    color: white;
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Roboto:wght@100;300&display=swap");
+:root {
+  --button: #b3b3b3;
+  --button-color: #0a0a0a;
+  --shadow: #000;
+  --bg: #737373;
+  --header: #7a7a7a;
+  --color: #fafafa;
+  --lit-header: #e6e6e6;
+  --speed: 2s;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transform-style: preserve-3d;
+}
+@property --swing-x {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<integer>';
+}
+@property --swing-y {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<integer>';
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  background: var(--bg);
+  color: var(--color);
+  perspective: 1200px;
+  overflow: hidden;
+}
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--button);
+  color: var(--button-color);
+  padding: 0.5rem;
+  margin: 5px;
+  border-radius: 3rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05rem;
+}
+h2{
+    margin-top: 10%;  
 }
 
-
-
-#intro{
-    margin: 5% 5% 2% 5%;
-    padding: 0% 5%;
-    border-left: 2px solid white;
-    width: 50%;
-    height: 60vh;
+p {
+  font-weight: 100;
+  margin: 2%;
 }
-
-h1{
-    font-size: 100px;
-    margin-left: 5%;
+h1 {
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+          animation: swing var(--speed) infinite alternate ease-in-out;
+  font-size: clamp(1rem, 10vmin, 10rem);
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  margin-bottom: 1rem;
+  letter-spacing: 1rem;
+  text-align: center;
+  transform: translate3d(0, 0, 0vmin);
+  --x: calc(50% + (var(--swing-x) * 0.5) * 1%);
+  background: radial-gradient(var(--lit-header), var(--header) 65%) var(--x) 100%/200% 200%;
+  -webkit-background-clip: text;
+  color: transparent;
 }
-
-p{
-    text-align: right;
-    font-size: 20px;
-    margin-right: 5%;
+h1:after {
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+          animation: swing var(--speed) infinite alternate ease-in-out;
+  content: "PRAVIN KUMAR";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--shadow);
+  filter: blur(1.5vmin);
+  transform: scale(1.05) translate3d(0, 12%, -10vmin) translate(calc((var(--swing-x, 0) * 0.05) * 1%), calc((var(--swing-y) * 0.05) * 1%));
+  overflow: hidden;
 }
-
-img{
-    margin-left: 4.3%;
-    cursor: pointer;
-    padding-bottom: 0.4%;
-    padding-top: 0.5%;
+.cloak {
+  animation: swing var(--speed) infinite alternate-reverse ease-in-out;
+  height: 100%;
+  width: 100%;
+  transform-origin: 50% 30%;
+  transform: rotate(calc(var(--swing-x) * -0.25deg));
+  background: radial-gradient(40% 40% at 50% 42%, transparent, #000 35%);
 }
-
-#about{
-    float: right;
-    width: 50%;
-    margin: 5% 0%;
+.cloak__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
 }
-
-#about-mobile{
-    display: none;
+.cloak__container {
+  height: 250vmax;
+  width: 250vmax;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-@media only screen and (max-width: 900px) {
-    
-    #intro{
-        width: 100%;
-    }
-
-    #about{
-        width: 100%;
-        display: none;
-    }
-
-    #about-mobile{
-        display:block;        
-    }
-
-    #about-mobile p{
-        text-align: justify;
-        padding: 2% 5%;
-    }
-
-
+.info {
+  text-align: center;
+  line-height: 1.5;
+  max-width: clamp(16rem, 90vmin, 35rem);
 }
-
-#about p {
-    font-size: 14px;
-    text-align: justify;
-    padding: 0% 5%;
+.info > p {
+  margin-bottom: 3rem;
 }
-
-
+@-webkit-keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+  50% {
+    --swing-y: 0;
+  }
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
+@keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+  50% {
+    --swing-y: 0;
+  }
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
